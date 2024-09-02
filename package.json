@@ -1,0 +1,37 @@
+{
+  "name": "test-stg",
+  "version": "0.0.1",
+  "description": "Package to run jest unit test only to staged files",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Antsbyte/test-stg.git"
+  },
+  "keywords": [
+    "test",
+    "jest",
+    "staged"
+  ],
+  "author": "Felipe Regalado",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Antsbyte/test-stg/issues"
+  },
+  "homepage": "https://github.com/Antsbyte/test-stg#readme",
+  "peerDependencies": {
+    "jest": ">26.6.3"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "jest": "^29.7.0",
+    "rollup": "^4.21.2"
+  }
+}
