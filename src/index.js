@@ -9,7 +9,7 @@ try {
                                     .map(file => path.dirname(file) + '/test/' + path.basename(file));
     const testFiles = testFilesPath.filter(file => fs.existsSync(file));
     if(testFiles.length > 0) {
-        execSync(`npm jest ${testFiles.join(' ') -u}`)
+        execSync(`npx jest ${testFiles.join(' ')} -u`)
     }
 } catch (error) {
     console.log('Error while executing tests');
