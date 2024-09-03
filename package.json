@@ -1,6 +1,6 @@
 {
   "name": "test-stg",
-  "version": "0.5.0",
+  "version": "0.7.0",
   "description": "Package to run jest unit test only to staged files",
   "main": "dist/index.js",
   "type": "module",
