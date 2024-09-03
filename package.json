@@ -2,7 +2,7 @@
   "name": "test-stg",
   "version": "0.5.0",
   "description": "Package to run jest unit test only to staged files",
-  "main": "index.js",
+  "main": "dist/index.js",
   "type": "module",
   "scripts": {
     "build": "rollup -c",
@@ -14,7 +14,7 @@
     "url": "git+ssh://git@github.com/Antsbyte/test-stg.git"
   },
   "bin": {
-    "test-stg": "./src/index.js"
+    "test-stg": "./dist/index.js"
   },
   "keywords": [
     "test",

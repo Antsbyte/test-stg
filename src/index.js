@@ -45,6 +45,8 @@ try {
         execSync(`npx jest ${testFiles.join(' ')} -u`)
     }
 } catch (error) {
-    console.log('Error while executing tests');
+    log(chalk.red(
+        chalk.red.underline.bold('Error while executing tests')
+    ));
     process.exit(error);
 }
