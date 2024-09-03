@@ -1,13 +1,13 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import json from "@rollup/plugin-json";
+import nodeGlobals from 'rollup-plugin-node-globals';
 
 export default {
   input: 'src/index.js',
   output: [
     {
       file: 'dist/index.js',
-      format: 'cjs'
+      format: 'es'
     },
     {
       file: 'dist/index.esm.js',
@@ -16,8 +16,11 @@ export default {
   ],
   external: ['fsevents', 'jest'],
   plugins: [
-    json(),
-    resolve(),
+    resolve({
+      browser: false,
+      preferBuiltins: true,
+    }),
+    //nodeGlobals(),
     commonjs()
   ]
 };

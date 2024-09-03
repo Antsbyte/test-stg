@@ -46,7 +46,12 @@ checkJest().then(() => {
         const testFiles = testFilesPath.filter(file => fs.existsSync(file));
         if(testFiles.length > 0) {
             execSync(`npx jest ${testFiles.join(' ')} -u`)
+            return;
         }
+
+        log(chalk.yellowBright(
+            chalk.yellowBright.underline.bold('No test to run')
+        ));
     } catch (error) {
         log(chalk.red(
             chalk.red.underline.bold('Error while executing tests')
