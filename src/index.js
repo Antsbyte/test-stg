@@ -36,5 +36,5 @@ try {
     }
 } catch (error) {
     console.log('Error while executing tests');
-    process.exit(1);
+    process.exit(error);
 }
