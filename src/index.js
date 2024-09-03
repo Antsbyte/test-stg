@@ -15,6 +15,15 @@ if(!['1', '2'].includes(patternPath)) {
     process.exit(1);
 }
 
+try {
+    await import('jest');
+} catch (error) {
+    log(chalk.red(
+        chalk.red.underline.bold('No jest installed')
+    ));
+    process.exit(1);
+}
+
 const buildPath = {
     1: file => path.dirname(file) + `/${nameTest}/` + path.basename(file),
     2: file => {
