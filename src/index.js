@@ -6,7 +6,7 @@ import path from 'path';
 import chalk from 'chalk';
 
 const log = console.log;
-const [patternPath, nameTest = 'test'] = process.argv.slice(2);
+const [patternPath = '1', nameTest = 'test'] = process.argv.slice(2);
 
 if(!['1', '2'].includes(patternPath)) {
     log(chalk.red(
@@ -15,13 +15,15 @@ if(!['1', '2'].includes(patternPath)) {
     process.exit(1);
 }
 
-try {
-    await import('jest');
-} catch (error) {
-    log(chalk.red(
-        chalk.red.underline.bold('No jest installed')
-    ));
-    process.exit(1);
+const checkJest = async() => {
+    try {
+        await import('jest');
+    } catch (error) {
+        log(chalk.red(
+            chalk.red.underline.bold('No jest installed')
+        ));
+        process.exit(1);
+    }
 }
 
 const buildPath = {
@@ -34,19 +36,22 @@ const buildPath = {
 
 const transformExt = file => file.replace(/\.(js|ts|jsx|tsx)$/, '.test' + path.extname(file))
 
-try {
-    const modifiedFiles = execSync('git diff --name-only --cached', {encoding: 'utf-8'}).trim().split('\n');
-    const testFilesPath = modifiedFiles.filter(file => file.match(/\.(js|jsx|ts|tsx)$/))
-                                    .map(buildPath[patternPath])
-                                    .map(transformExt)
+checkJest().then(() => {
+    try {
+        const modifiedFiles = execSync('git diff --name-only --cached', {encoding: 'utf-8'}).trim().split('\n');
+        const testFilesPath = modifiedFiles.filter(file => file.match(/\.(js|jsx|ts|tsx)$/))
+                                        .map(buildPath[patternPath])
+                                        .map(transformExt)
 
-    const testFiles = testFilesPath.filter(file => fs.existsSync(file));
-    if(testFiles.length > 0) {
-        execSync(`npx jest ${testFiles.join(' ')} -u`)
+        const testFiles = testFilesPath.filter(file => fs.existsSync(file));
+        if(testFiles.length > 0) {
+            execSync(`npx jest ${testFiles.join(' ')} -u`)
+        }
+    } catch (error) {
+        log(chalk.red(
+            chalk.red.underline.bold('Error while executing tests')
+        ));
+        process.exit(error);
     }
-} catch (error) {
-    log(chalk.red(
-        chalk.red.underline.bold('Error while executing tests')
-    ));
-    process.exit(error);
-}
+})
+

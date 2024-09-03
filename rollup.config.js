@@ -14,6 +14,7 @@ export default {
       format: 'esm'
     }
   ],
+  external: ['fsevents', 'jest'],
   plugins: [
     json(),
     resolve(),

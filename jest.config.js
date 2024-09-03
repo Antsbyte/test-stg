@@ -2,7 +2,7 @@ const config = {
     // Indica que estás utilizando un entorno Node.js para las pruebas
     testEnvironment: 'node',
     // Directorio donde Jest buscará los archivos de prueba
-    roots: ['<rootDir>/src'],
+    roots: ['<rootDir>/.'],
     // Extensiones de archivo que Jest reconocerá para las pruebas
     moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx', 'node'],
     // Patrón para identificar los archivos de prueba
