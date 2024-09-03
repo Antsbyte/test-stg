@@ -14,6 +14,9 @@
     "type": "git",
     "url": "git+ssh://git@github.com/Antsbyte/test-stg.git"
   },
+  "bin": {
+    "test-stg": "./src/index.js"
+  },
   "keywords": [
     "test",
     "jest",
