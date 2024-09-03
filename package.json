@@ -1,6 +1,6 @@
 {
   "name": "test-stg",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Package to run jest unit test only to staged files",
   "main": "index.js",
   "type": "module",
@@ -35,5 +35,8 @@
     "babel-jest": "^29.7.0",
     "jest": "^29.7.0",
     "rollup": "^4.21.2"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0"
   }
 }

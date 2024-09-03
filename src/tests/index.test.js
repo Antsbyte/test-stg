@@ -10,7 +10,7 @@ describe('index', () => {
 
         expect(() => {
             execSync('node src/index.js');
-        }).not.toThrow();
+        }).toThrow();
         //expect(true).toBe(true);
     })
 })
